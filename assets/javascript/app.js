@@ -5,7 +5,7 @@ $(document).ready(function(){
 	var questionObj;
 	var maxChoice = 4;
 	var correctChoice = 0;
-	var allowedTime = 5;
+	var allowedTime = 30;
 	var resultTime = 3000; //3 seconds
 	var numbCorrect = 0;
 	var numbWrong = 0;
@@ -28,6 +28,7 @@ $(document).ready(function(){
 		//set questionObj to result of the response, which is the array of questions/answer
 		questionObj = response.results;
 		//show start button ocne the question are loaded
+		$("#loading").hide();
 		$("#start").show();
 
 	});
@@ -43,6 +44,7 @@ $(document).ready(function(){
 			currQuestion = 0;
 			timeGiven = allowedTime;
 			$('body').html(original);
+			$("#start").hide();	
 
 		},
 
@@ -89,7 +91,13 @@ $(document).ready(function(){
     			if (TriviaGame.timeGiven <= 0) {
     				//case 2
 	    			numbUnanswered++;
-	    			TriviaGame.nextQuestion();
+	    			TriviaGame.showTimeOver();
+				
+					setTimeout(function() {
+					
+						TriviaGame.nextQuestion();
+
+					}, resultTime);
 
 				} else {
     				//case3
@@ -221,7 +229,23 @@ $(document).ready(function(){
 			$("#incorrectImg").attr("src", "http://weknowmemes.com/wp-content/uploads/2012/09/if-i-agreed-with-you-we-would-both-be-wrong-bill-nye.jpg");
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
-		}
+		},
+
+		//When user didnt answer a question within alllowedTime, this is called to update page to show a out of time screen
+		showTimeOver: function() {
+
+			TriviaGame.stop();
+
+			var content = triviaGameHtmlContent;
+			content.html("");
+
+			appendRowAndCol(content, 12, 'h1', "Trivia Game", "", "");
+			appendRowAndCol(content, 12, 'h2', "Ooops! You are Out of TIME!", "", "");
+			appendRowAndCol(content, 12, 'img', "", "correctImg", "");
+			$("#correctImg").attr("src", "https://exgirlfriendrecovery.com/wp-content/uploads/2014/12/no-time.jpg");
+			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
+
+		},
 
 	}
 
@@ -229,6 +253,9 @@ $(document).ready(function(){
 	$("#start").on("click", function(){
 
 		TriviaGame.start();
+		$("#firstContainer").css("border", "3px solid white");
+		$("#firstContainer").css("border-radius", "10px");
+		$("#firstContainer").css("background-color", "rgba(255,255,255, 0.7)");
 
 	})
 
