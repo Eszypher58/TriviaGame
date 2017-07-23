@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var maxChoice = 4;
 	var correctChoice = 0;
 	var allowedTime = 30;
-	var resultTime = 30000; //3 seconds
+	var resultTime = 3000; //3 seconds
 	var numbCorrect = 0;
 	var numbWrong = 0;
 	var numbUnanswered = 0;
@@ -22,7 +22,8 @@ $(document).ready(function(){
 	$.ajax({
 
 		url: queryURL,
-		method: "GET"
+		method: "GET",
+
 	}).done(function(response) {
 
 		//set questionObj to result of the response, which is the array of questions/answer
@@ -172,7 +173,7 @@ $(document).ready(function(){
 
 		},
 
-		//dynamicall generate the results page
+		//dynamically generate the results page
 		showResult: function() {
 
 			//clear previous content
@@ -214,7 +215,6 @@ $(document).ready(function(){
 
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
-
 		},
 
 		//When user answers a Question correctly, this is called to update page to show a correct screen
@@ -228,7 +228,7 @@ $(document).ready(function(){
 			appendRowAndCol(content, 12, 'h1', "Trivia Game", "", "");
 			appendRowAndCol(content, 12, 'h2', "Sorry! You are Wrong!", "", "");
 			appendRowAndCol(content, 12, 'img', "", "incorrectImg", "");
-			$("#correctImg").attr("class", "img-responsive center-block");
+			$("#incorrectImg").attr("class", "img-responsive center-block");
 			$("#incorrectImg").attr("src", "http://weknowmemes.com/wp-content/uploads/2012/09/if-i-agreed-with-you-we-would-both-be-wrong-bill-nye.jpg");
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
@@ -245,7 +245,7 @@ $(document).ready(function(){
 			appendRowAndCol(content, 12, 'h1', "Trivia Game", "", "");
 			appendRowAndCol(content, 12, 'h2', "Ooops! You are Out of TIME!", "", "");
 			appendRowAndCol(content, 12, 'img', "", "correctImg", "");
-			$("#correctImg").attr("class", "img-responsive");
+			$("#correctImg").attr("class", "img-responsive center-block");
 			$("#correctImg").attr("src", "https://exgirlfriendrecovery.com/wp-content/uploads/2014/12/no-time.jpg");
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
