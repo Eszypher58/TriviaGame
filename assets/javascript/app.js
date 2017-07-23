@@ -209,7 +209,9 @@ $(document).ready(function(){
 			appendRowAndCol(content, 12, 'h1', "Trivia Game", "", "");
 			appendRowAndCol(content, 12, 'h2', "Congratulation! You are RIGHT!", "", "");
 			appendRowAndCol(content, 12, 'img', "", "correctImg", "");
+			$("#correctImg").attr("class", "img-responsive");
 			$("#correctImg").attr("src", "http://i0.kym-cdn.com/photos/images/original/000/909/991/48c.jpg");
+
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
 
@@ -226,6 +228,7 @@ $(document).ready(function(){
 			appendRowAndCol(content, 12, 'h1', "Trivia Game", "", "");
 			appendRowAndCol(content, 12, 'h2', "Sorry! You are Wrong!", "", "");
 			appendRowAndCol(content, 12, 'img', "", "incorrectImg", "");
+			$("#correctImg").attr("class", "img-responsive");
 			$("#incorrectImg").attr("src", "http://weknowmemes.com/wp-content/uploads/2012/09/if-i-agreed-with-you-we-would-both-be-wrong-bill-nye.jpg");
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
@@ -242,6 +245,7 @@ $(document).ready(function(){
 			appendRowAndCol(content, 12, 'h1', "Trivia Game", "", "");
 			appendRowAndCol(content, 12, 'h2', "Ooops! You are Out of TIME!", "", "");
 			appendRowAndCol(content, 12, 'img', "", "correctImg", "");
+			$("#correctImg").attr("class", "img-responsive");
 			$("#correctImg").attr("src", "https://exgirlfriendrecovery.com/wp-content/uploads/2014/12/no-time.jpg");
 			appendRowAndCol(content, 12, 'h3', "Correct Answer is: " + questionObj[TriviaGame.currQuestion].correct_answer, "", "");
 
