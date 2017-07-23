@@ -298,6 +298,18 @@ $(document).ready(function(){
 
 		})
 
+		$(".answers").hover(function(){
+
+			$(this).css("font-weight", "Bold");
+			$(this).css("color", "blue")
+
+		}, function(){
+
+			$(this).css("font-weight", "normal");
+			$(this).css("color", "#333")
+
+		})
+
 	};
 
 	//helper function to setup bootstrap row & column
